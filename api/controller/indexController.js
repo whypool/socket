@@ -6,5 +6,8 @@
 module.exports = {
     index: (req, res) => {
         res.render('index');
+    },
+    game:(req,res)=>{
+        res.render('game/tetris');
     }
 };

@@ -7,5 +7,6 @@ const router = express.Router();
 const indexController = require(process.cwd()+'/api/controller/indexController');
 
 router.get('/',indexController.index);
+router.get('/game',indexController.game);
 
 module.exports = router;
