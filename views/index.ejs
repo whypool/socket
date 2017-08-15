@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>测试哦</title>
+</head>
+<body>
+<ul id="messages"></ul>
+<form action="">
+    <input id="m" autocomplete="off" /><button>发送</button>
+</form>
+<script src="http://cdn.bootcss.com/socket.io/2.0.3/socket.io.js"></script>
+<script src="http://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script>
+    var socket = io.connect('/chat');
+    $('form').submit(function(){
+        socket.emit('chat', $('#m').val());
+        $('#m').val('');
+        return false;
+    });
+    socket.on('chat', function(msg){
+        $('#messages').append($('<li>').text(msg));
+    });
+</script>
+</body>
+</html>
